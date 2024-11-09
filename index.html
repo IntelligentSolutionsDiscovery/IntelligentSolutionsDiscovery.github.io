@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISD - Revolutionizing Healthcare in Saudi Arabia</title>
+    <link rel="stylesheet" href="https://use.typekit.net/yth1inv.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'proxima-nova', sans-serif;
+            color: #333;
+        }
+        .welcome-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #47eb9b, #407ef2, #47eb9b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .typewriter {
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            max-width: 80%;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 1000;
+        }
+        header.transparent {
+            background-color: transparent;
+        }
+        header.solid {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            width: 80px;
+            height: 40px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+        header.transparent nav ul li a {
+            color: white;
+        }
+        .content {
+            padding-top: 60px;
+        }
+        section {
+            margin: 40px 0;
+        }
+        h2 {
+            border-bottom: 3px solid #47eb9b;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .story-content {
+            display: flex;
+            align-items: center;
+        }
+        .story-image {
+            width: 300px;
+            height: 200px;
+            background-color: #ddd;
+            margin-right: 20px;
+        }
+        .vision-mission, .why-partner, .core-objectives {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .vision, .mission, .why-partner-item, .core-objective {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        .scroll-container {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        .scroll-content {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .scroll-item {
+            flex: 0 0 100%;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .scroll-item img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .scroll-arrow.left {
+            left: 10px;
+        }
+        .scroll-arrow.right {
+            right: 10px;
+        }
+        #team {
+            text-align: center;
+        }
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        .team-member {
+            width: 30%;
+            margin-right: 3%;
+        }
+        .team-member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .team-members, .vision-mission, .why-partner, .core-objectives {
+                flex-direction: column;
+            }
+            .team-member, .vision, .mission, .why-partner-item, .core-objective {
+                width: 100%;
+                margin-bottom: 20px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="transparent">
+        <nav>
+            <div class="logo">Logo</div>
+            <ul>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#vision-mission">Vision & Mission</a></li>
+                <li><a href="#why-partner">Why Partner</a></li>
+                <li><a href="#core-objectives">Core Objectives</a></li>
+                <li><a href="#solutions">Our Solutions</a></li>
+                <li><a href="#dates">Our Dates</a></li>
+                <li><a href="#team">Our Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="welcome-section">
+        <div class="animated-gradient"></div>
+        <div class="typewriter" id="typewriter"></div>
+    </div>
+
+    <div class="container content">
+        <section id="story">
+            <h2>Our Story</h2>
+            <div class="story-content">
+                <div class="story-image"></div>
+                <p>Your company story goes here. Describe your journey, mission, and values.</p>
+            </div>
+        </section>
+
+        <section id="vision-mission">
+            <div class="vision-mission">
+                <div class="vision">
+                    <h2>Our Vision</h2>
+                    <p>To become the catalyst for clinical and biomedical research excellence in Saudi Arabia, equipping professionals with state-of-the-art tools and expertise to drive forward pioneering advancements in healthcare, clinical, and biomedical research.</p>
+                </div>
+                <div class="mission">
+                    <h2>Our Mission</h2>
+                    <p>We empower healthcare institutions and professionals with cutting-edge AI solutions, comprehensive capacity development programs, and expert clinical and biostatistical research services. Our goal is to ensure efficient, ethical, and data-driven management of clinical trials and biomedical research, shaping the future of healthcare.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-partner">
+            <h2>Why Partner With Us?</h2>
+            <div class="why-partner">
+                <div class="why-partner-item">
+                    <h3>Biotech Strategy: Aligning with National Vision</h3>
+                    <p>Our efforts are aligned with Saudi Arabia's National Biotechnology Strategy, which aspires to position the nation as a global leader in biotechnology by 2040. By leveraging AI, we aim to enhance clinical research efficiency, accelerate medical breakthroughs, and improve patient outcomes, all while contributing to the country's Vision 2030.</p>
+                </div>
+                <div class="why-partner-item">
+                    <h3>Sustainable Talent Development</h3>
+                    <p>We are dedicated to fostering a sustainable talent ecosystem by delivering tailored training programs designed to meet the evolving needs of the clinical research and biotech sectors. Our focus is on cultivating a skilled workforce capable of leading future innovations.</p>
+                </div>
+                <div class="why-partner-item">
+                    <h3>State-of-the-Art Infrastructure</h3>
+                    <p>Through AI optimization, we aim to unlock the full potential of Saudi Arabia's existing infrastructure in research and development. Our solutions target key areas such as vaccine development, biomanufacturing, and genomics, driving economic growth, creating high-quality jobs, and improving the well-being of citizens.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="core-objectives">
+            <h2>Our Core Objectives</h2>
+            <div class="core-objectives">
+                <div class="core-objective">
+                    <h3>1: AI-Enhanced Clinical Research</h3>
+                    <p>Harness the power of AI to streamline clinical trial management, enhance data analytics, and optimize patient recruitment processes. By integrating AI technology with human expertise, we significantly reduce research timelines while improving clinical outcomes.</p>
+                </div>
+                <div class="core-objective">
+                    <h3>2: AI Training for Healthcare Experts</h3>
+                    <p>We empower healthcare professionals with advanced AI skills and knowledge, enabling them to effectively design, conduct, and analyze clinical trials. Our tailored training programs equip them to lead innovation in AI-powered clinical research.</p>
+                </div>
+                <div class="core-objective">
+                    <h3>3: Consultancy and Regulatory Compliance</h3>
+                    <p>We provide expert consultancy services to ensure that clinical research projects are conducted in line with global best practices and comply with international regulatory standards, ensuring both ethical and efficient project execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solutions">
+            <h2>Our Solutions</h2>
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <div class="scroll-item">
+                        <img src="solution1.jpg" alt="Solution 1">
+                        <h3>Solution 1</h3>
+                        <p>Description of solution 1.</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="solution2.jpg" alt="Solution 2">
+                        <h3>Solution 2</h3>
+                        <p>Description of solution 2.</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="solution3.jpg" alt="Solution 3">
+                        <h3>Solution 3</h3>
+                        <p>Description of solution 3.</p>
+                    </div>
+                </div>
+                <div class="scroll-arrow left">&#10094;</div>
+                <div class="scroll-arrow right">&#10095;</div>
+            </div>
+        </section>
+
+        <section id="dates">
+            <h2>Our Dates</h2>
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <div class="scroll-item">
+                        <h3>Event 1</h3>
+                        <p>Date: January 1, 2025</p>
+                    </div>
+                    <div class="scroll-item">
+                        <h3>Event 2</h3>
+                        <p>Date: February 15, 2025</p>
+                    </div>
+                    <div class="scroll-item">
+                        <h3>Event 3</h3>
+                        <p>Date: March 30, 2025</p>
+                    </div>
+                </div>
+                <div class="scroll-arrow left">&#10094;</div>
+                <div class="scroll-arrow right">&#10095;</div>
+            </div>
+        </section>
+
+        <section id="team">
+            <h2>Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="ceo-placeholder.jpg" alt="CEO">
+                    <h3>CEO</h3>
+                    <p>Description of CEO.</p>
+                </div>
+                <div class="team-member">
+                    <img src="coo-placeholder.jpg" alt="COO">
+                    <h3>COO</h3>
+                    <p>Description of COO.</p>
+                </div>
+                <div class="team-member">
+                    <img src="cto-placeholder.jpg" alt="CTO">
+                    <h3>CTO</h3>
+                    <p>Description of CTO.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Typewriter effect
+        const text = "Welcome to ISD. Join us as we Revolutionize Healthcare in Saudi Arabia through AI-Powered Clinical Research";
+        const typewriter = document.getElementById('typewriter');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                typewriter.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (i > 0) {
+                typewriter.innerHTML = text.substring(0, i-1);
+                i--;
+                setTimeout(eraseText, 25);
+            } else {
+                setTimeout(typeWriter, 1000);
+            }
+        }
+
+        typeWriter();
+
+        // Navigation bar scroll effect
+        const header = document.querySelector('header');
+        const welcomeSection = document.querySelector('.welcome-section');
+
+        function checkScroll() {
+            const welcomeSectionBottom = welcomeSection.offsetTop + welcomeSection.offsetHeight;
+            if (window.pageYOffset > welcomeSectionBottom - header.offsetHeight) {
+                header.classList.remove('transparent');
+                header.classList.add('solid');
+            } else {
+                header.classList.add('transparent');
+                header.classList.remove('solid');
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Scrolling functionality
+        document.querySelectorAll('.scroll-container').forEach(container => {
+            const content = container.querySelector('.scroll-content');
+            const items = content.querySelectorAll('.scroll-item');
+            let currentIndex = 0;
+
+            container.querySelector('.scroll-arrow.left').addEventListener('click', () => {
+                                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateScroll();
+                }
+            });
+
+            container.querySelector('.scroll-arrow.right').addEventListener('click', () => {
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                    updateScroll();
+                }
+            });
+
+            function updateScroll() {
+                content.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+        });
+    </script>
+</body>
+</html>
