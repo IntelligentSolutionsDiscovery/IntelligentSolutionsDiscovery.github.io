@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISD - Revolutionizing Healthcare in Saudi Arabia</title>
     <link rel="stylesheet" href="https://use.typekit.net/yth1inv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body, html {
             margin: 0;
@@ -33,15 +34,9 @@
             z-index: -1;
         }
         @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .typewriter {
             color: white;
@@ -80,12 +75,8 @@
             margin: 0 auto;
         }
         .logo {
-            width: 80px;
-            height: 40px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 200px;
+            height: auto;
         }
         nav ul {
             list-style-type: none;
@@ -112,27 +103,40 @@
             margin: 40px 0;
         }
         h2 {
-            border-bottom: 3px solid #47eb9b;
+            position: relative;
             padding-bottom: 10px;
             text-align: center;
         }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #47eb9b, #407ef2);
+        }
         .story-content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 40px;
         }
         .story-image {
             width: 300px;
-            height: 200px;
-            background-color: #ddd;
-            margin-right: 20px;
+            height: auto;
+            flex-shrink: 0;
         }
         .vision-mission, .why-partner, .core-objectives {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
-        .vision, .mission, .why-partner-item, .core-objective {
+        .vision, .mission {
             width: 48%;
+            margin-bottom: 20px;
+        }
+        .why-partner-item, .core-objective {
+            width: 100%;
             margin-bottom: 20px;
         }
         .scroll-container {
@@ -148,6 +152,7 @@
             flex: 0 0 100%;
             padding: 0 20px;
             text-align: center;
+            box-sizing: border-box;
         }
         .scroll-item img {
             width: 200px;
@@ -194,6 +199,23 @@
             object-fit: cover;
             background-color: #ddd;
         }
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #333;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #47eb9b;
+        }
         @media (max-width: 768px) {
             .team-members, .vision-mission, .why-partner, .core-objectives {
                 flex-direction: column;
@@ -203,13 +225,20 @@
                 margin-bottom: 20px;
                 margin-right: 0;
             }
+            .story-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .story-image {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <header class="transparent">
         <nav>
-            <div class="logo">Logo</div>
+            <img src="https://iili.io/2IrZJyP.md.png" alt="Your Company Logo" class="logo">
             <ul>
                 <li><a href="#story">Our Story</a></li>
                 <li><a href="#vision-mission">Vision & Mission</a></li>
@@ -231,8 +260,8 @@
         <section id="story">
             <h2>Our Story</h2>
             <div class="story-content">
-                <div class="story-image"></div>
-                <p>Your company story goes here. Describe your journey, mission, and values.</p>
+                <img src="https://iili.io/2TRDnMQ.md.jpg" alt="Our Story" class="story-image">
+                <p>Our focus lies in providing solutions for clinical research, including data analysis, trial optimization, clinical trials trainings and personalized drug development. We uphold the highest standards of clinical ethics, data privacy, transparency, and collaboration; ensuring every advancement is both groundbreaking and responsible.</p>
             </div>
         </section>
 
@@ -271,15 +300,15 @@
             <h2>Our Core Objectives</h2>
             <div class="core-objectives">
                 <div class="core-objective">
-                    <h3>1: AI-Enhanced Clinical Research</h3>
+                    <h3>AI-Enhanced Clinical Research</h3>
                     <p>Harness the power of AI to streamline clinical trial management, enhance data analytics, and optimize patient recruitment processes. By integrating AI technology with human expertise, we significantly reduce research timelines while improving clinical outcomes.</p>
                 </div>
                 <div class="core-objective">
-                    <h3>2: AI Training for Healthcare Experts</h3>
+                    <h3>AI Training for Healthcare Experts</h3>
                     <p>We empower healthcare professionals with advanced AI skills and knowledge, enabling them to effectively design, conduct, and analyze clinical trials. Our tailored training programs equip them to lead innovation in AI-powered clinical research.</p>
                 </div>
                 <div class="core-objective">
-                    <h3>3: Consultancy and Regulatory Compliance</h3>
+                    <h3>Consultancy and Regulatory Compliance</h3>
                     <p>We provide expert consultancy services to ensure that clinical research projects are conducted in line with global best practices and comply with international regulatory standards, ensuring both ethical and efficient project execution.</p>
                 </div>
             </div>
@@ -290,19 +319,19 @@
             <div class="scroll-container">
                 <div class="scroll-content">
                     <div class="scroll-item">
-                        <img src="solution1.jpg" alt="Solution 1">
-                        <h3>Solution 1</h3>
-                        <p>Description of solution 1.</p>
+                        <img src="https://iili.io/2T3YXqv.md.png" alt="Solution 1">
+                        <h3>AI Solutions for Healthcare</h3>
+                        <p>Leverage AI to streamline clinical trials, enhance data analysis, and provide customized AI solutions to improve patient outcomes, such as predictive analytics for disease risk assessment, personalized medicine recommendations, and drug discovery acceleration.</p>
                     </div>
                     <div class="scroll-item">
-                        <img src="solution2.jpg" alt="Solution 2">
-                        <h3>Solution 2</h3>
-                        <p>Description of solution 2.</p>
+                        <img src="https://iili.io/2T3YXqv.md.png" alt="Solution 2">
+                        <h3>World-class Clinical Research Capacity Building Training</h3>
+                        <p>Empower healthcare professionals and create a sustainable pool of skilled professionals through implementing tailored clinical research talent development programs for specific requirements of the Clinical Research & biotech industry.</p>
                     </div>
                     <div class="scroll-item">
-                        <img src="solution3.jpg" alt="Solution 3">
-                        <h3>Solution 3</h3>
-                        <p>Description of solution 3.</p>
+                        <img src="https://iili.io/2T3YXqv.md.png" alt="Solution 3">
+                        <h3>Expert Consultancy for Clinical Research Ecosystem</h3>
+                        <p>Consultancy services include CRO/SMO that leverages AI to streamline various aspects of clinical trials, including patient recruitment, data management, and analysis, ensuring faster and more accurate results.</p>
                     </div>
                 </div>
                 <div class="scroll-arrow left">&#10094;</div>
@@ -315,16 +344,16 @@
             <div class="scroll-container">
                 <div class="scroll-content">
                     <div class="scroll-item">
-                        <h3>Event 1</h3>
-                        <p>Date: January 1, 2025</p>
+                        <h3>Course 1</h3>
+                        <p>Date: TBD</p>
                     </div>
                     <div class="scroll-item">
-                        <h3>Event 2</h3>
-                        <p>Date: February 15, 2025</p>
+                        <h3>Course 2</h3>
+                        <p>Date: TBD</p>
                     </div>
                     <div class="scroll-item">
-                        <h3>Event 3</h3>
-                        <p>Date: March 30, 2025</p>
+                        <h3>Course 3</h3>
+                        <p>Date: TBD</p>
                     </div>
                 </div>
                 <div class="scroll-arrow left">&#10094;</div>
@@ -336,27 +365,39 @@
             <h2>Our Team</h2>
             <div class="team-members">
                 <div class="team-member">
-                    <img src="ceo-placeholder.jpg" alt="CEO">
-                    <h3>CEO</h3>
-                    <p>Description of CEO.</p>
+                    <img src="https://iili.io/2Ta2wGt.png" alt="CEO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                    <h3>Eng. Hani Ashqar</h3>
+                    <h3>CO-FOUNDER, CEO</h3>
+                    <p>A dynamic leader with 20+ years of executive experience in operations, business development, and finance across industry, academia, NGO, and government sectors.</p>
                 </div>
                 <div class="team-member">
-                    <img src="coo-placeholder.jpg" alt="COO">
-                    <h3>COO</h3>
-                    <p>Description of COO.</p>
+                        <img src="https://iili.io/2TYQ2mg.md.jpg" alt="COO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                    <h3>Sadiqa Siddique, MICR</h3>
+                    <h3>CO-FOUNDER, COO</h3>
+                    <p>Over two decades of pharmaceutical R&D, Clinical Research, and Drug Development through clinical trials globally across pharma and academia.</p>
                 </div>
-                <div class="team-member">
-                    <img src="cto-placeholder.jpg" alt="CTO">
-                    <h3>CTO</h3>
-                    <p>Description of CTO.</p>
+                                <div class="team-member">
+                    <img src="https://iili.io/2Tad8hB.md.jpg" alt="CTO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                    <h3>Prof. Hernando Ombao</h3>
+                    <h3>CO-FOUNDER, CTO</h3>
+                    <p>Senior KAUST Faculty and brings the great strength in bioinformatics & AI in healthcare.</p>
                 </div>
             </div>
         </section>
     </div>
 
+    <footer>
+        <h2>Our Socials</h2>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/intelligent-solutions-discovery" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/intelligent-solutions-discovery" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        </div>
+    </footer>
+
     <script>
         // Typewriter effect
-        const text = "Welcome to ISD. Join us as we Revolutionize Healthcare in Saudi Arabia through AI-Powered Clinical Research";
+        const text = "Bridging AI technology with human expertise, 'Intelligent Solutions Discovery' aims to empower Saudi Arabia's healthcare sector to accelerate clinical innovation, improve patient care and develop clinical research ecosystem for world-class drug development in KSA";
         const typewriter = document.getElementById('typewriter');
         let i = 0;
 
@@ -407,7 +448,7 @@
             let currentIndex = 0;
 
             container.querySelector('.scroll-arrow.left').addEventListener('click', () => {
-                                if (currentIndex > 0) {
+                if (currentIndex > 0) {
                     currentIndex--;
                     updateScroll();
                 }
