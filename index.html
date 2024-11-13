@@ -6,248 +6,639 @@
     <title>ISD - Revolutionizing Healthcare in Saudi Arabia</title>
     <link rel="stylesheet" href="https://use.typekit.net/yth1inv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'proxima-nova', sans-serif;
-            color: #333;
-        }
-        .welcome-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .animated-gradient {
+    /* =============== FONTS =============== */
+    @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v29/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/montserrat/v29/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');
+    }
+
+    /* =============== VARIABLES CSS =============== */
+    :root {
+        --header-height: 3.5rem;
+        --white-color: #fff;
+        --black-color: #000;
+        --body-font: "Montserrat", sans-serif;
+        --normal-font-size: .938rem;
+        --font-regular: 400;
+        --font-semi-bold: 600;
+        --z-tooltip: 10;
+        --z-fixed: 100;
+    }
+
+    /* =============== BASE =============== */
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        font-family: var(--body-font);
+        font-size: var(--normal-font-size);
+        background-color: white;
+        color: black;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* =============== HEADER =============== */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 16px hsla(220, 32%, 8%, .1);
+        z-index: var(--z-fixed);
+    }
+
+    /* =============== NAV =============== */
+    .nav {
+        height: var(--header-height);
+        background-color: white;
+    }
+
+    .nav__logo,
+    .nav__burger,
+    .nav__close {
+        color: black;
+    }
+
+    .nav__data {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav__logo {
+        display: inline-flex;
+        align-items: center;
+        column-gap: .25rem;
+        font-weight: var(--font-semi-bold);
+        color: black;
+    }
+
+    .nav__logo i {
+        font-weight: initial;
+        font-size: 1.25rem;
+    }
+
+    .nav__toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav__burger,
+    .nav__close {
+        position: absolute;
+        width: max-content;
+        height: max-content;
+        inset: 0;
+        margin: auto;
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: opacity .1s, transform .4s;
+    }
+
+    .nav__close {
+        opacity: 0;
+    }
+
+    /* Navigation for mobile devices */
+    @media screen and (max-width: 1118px) {
+        .nav__menu {
             position: absolute;
-            top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #47eb9b, #407ef2, #47eb9b);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            z-index: -1;
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .typewriter {
-            color: white;
-            font-size: 2em;
-            text-align: center;
-            max-width: 80%;
-            z-index: 1;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            top: 2.5rem;
+            width: 100%;
+            height: calc(100vh - 3.5rem);
+            overflow: auto;
+            pointer-events: none;
+            opacity: 0;
+            transition: top .4s, opacity .3s;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        header {
-            position: fixed;
-            top: 0;
+        .nav__menu::-webkit-scrollbar {
+            width: 0;
+        }
+        .nav__list {
+            background-color: white;
+            padding-top: 1rem;
+        }
+    }
+
+    .nav__link {
+        color: black;
+        background-color: white;
+        font-weight: var(--font-semi-bold);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Show menu */
+    .show-menu {
+        opacity: 1;
+        top: 3.5rem;
+        pointer-events: initial;
+    }
+
+    /* Show icon */
+    .show-icon .nav__burger {
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+
+    .show-icon .nav__close {
+        opacity: 1;
+        transform: rotate(90deg);
+    }
+
+    /* =============== DROPDOWN =============== */
+    .dropdown__item {
+        position: relative;
+        cursor: pointer;
+        background-color: white;
+    }
+
+    .dropdown__arrow {
+        font-size: 1.25rem;
+        transition: transform 0.4s;
+    }
+
+    /* Dropdown Links */
+    .dropdown__link,
+    .dropdown__sublink {
+        display: flex;
+        align-items: center;
+        padding: 1.25rem 2.5rem;
+        color: black;
+        background-color: white;
+        gap: 0.5rem;
+        font-weight: 600;
+    }
+
+    .dropdown__link i,
+    .dropdown__sublink i {
+        font-size: 1.25rem;
+    }
+
+    /* Hidden Dropdown Menus */
+    .dropdown__menu,
+    .dropdown__submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: white;
+    }
+
+    /* Show Dropdown on Hover */
+    .dropdown__item:hover .dropdown__menu,
+    .dropdown__subitem:hover > .dropdown__submenu {
+        max-height: 1000px;
+        transition: max-height 0.4s ease-in;
+    }
+
+    /* Rotate Arrow on Hover */
+    .dropdown__item:hover .dropdown__arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Submenu Specific */
+    .dropdown__add {
+        margin-left: auto;
+    }
+
+    /* Desktop Styles */
+    @media screen and (min-width: 1118px) {
+        .dropdown__item,
+        .dropdown__subitem {
+            position: relative;
+        }
+
+        .dropdown__menu,
+        .dropdown__submenu {
+            position: absolute;
             left: 0;
-            right: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            z-index: 1000;
+            top: 6rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, top 0.3s;
+            background-color: white;
         }
-        header.transparent {
+
+        .dropdown__submenu {
+            left: 100%;
+            top: 0.5rem;
+        }
+
+        .dropdown__item:hover .dropdown__menu {
+            opacity: 1;
+            top: 5.5rem;
+            pointer-events: auto;
+        }
+
+        .dropdown__subitem:hover > .dropdown__submenu {
+            opacity: 1;
+            top: 0;
+            pointer-events: auto;
+        }
+    }
+
+    /* =============== WELCOME SECTION =============== */
+    .welcome-section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .animated-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #47eb9b, #407ef2, #47eb9b);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        z-index: -1;
+    }
+
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .typewriter {
+        color: white;
+        font-size: 2em;
+        text-align: center;
+        max-width: 80%;
+        z-index: 1;
+    }
+
+    /* =============== CONTAINER AND LAYOUT =============== */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* =============== HEADER STYLES =============== */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        z-index: 1000;
+    }
+
+    header.solid {
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .logo {
+        width: 200px;
+        height: auto;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9em;
+        transition: color 0.3s ease;
+    }
+
+    /* =============== CONTENT SECTIONS =============== */
+    .content {
+        padding-top: 60px;
+    }
+
+    section {
+        margin: 40px 0;
+    }
+
+    h2 {
+        position: relative;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(to right, #47eb9b, #407ef2);
+    }
+
+    /* =============== STORY SECTION =============== */
+    .story-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .story-image {
+        width: 300px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    /* =============== VISION & MISSION =============== */
+    .vision-mission, .why-partner, .core-objectives {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .vision, .mission {
+        width: 48%;
+        margin-bottom: 20px;
+    }
+
+    .why-partner-item, .core-objective {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* =============== SCROLL CONTAINER =============== */
+    .scroll-container {
+        position: relative;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    .scroll-content {
+        display: flex;
+        transition: transform 0.3s ease;
+    }
+
+    .scroll-item {
+        flex: 0 0 100%;
+        padding: 0 20px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .scroll-item img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .scroll-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .scroll-arrow.left {
+        left: 10px;
+    }
+
+    .scroll-arrow.right {
+        right: 10px;
+    }
+
+    /* =============== TEAM SECTION =============== */
+    #team {
+        text-align: center;
+    }
+
+    .team-members {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+
+    .team-member {
+        width: 30%;
+        margin-right: 3%;
+    }
+
+    .team-member img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background-color: #ddd;
+    }
+
+    /* =============== FOOTER =============== */
+    footer {
+        background-color: #f8f8f8;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+
+    .social-icons a {
+        color: #333;
+        font-size: 24px;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: #47eb9b;
+    }
+
+    /* =============== RESPONSIVE BREAKPOINTS =============== */
+    @media screen and (min-width: 1024px) {
+        :root {
+            --normal-font-size: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 1118px) {
+        .container {
+            margin-inline: auto;
+        }
+
+        .nav {
+            height: calc(var(--header-height) + 2rem);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav__toggle {
+            display: none;
+        }
+
+        .nav__list {
+            height: 100%;
+            display: flex;
+            column-gap: 3rem;
+        }
+
+        .nav__link {
+            height: 100%;
+            padding: 0;
+            justify-content: initial;
+            column-gap: .25rem;
+        }
+
+        .nav__link:hover {
             background-color: transparent;
         }
-        header.solid {
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .logo {
-            width: 200px;
-            height: auto;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9em;
-            transition: color 0.3s ease;
-        }
-        header.transparent nav ul li a {
-            color: white;
-        }
-        .content {
-            padding-top: 60px;
-        }
-        section {
-            margin: 40px 0;
-        }
-        h2 {
+
+        .dropdown__item,
+        .dropdown__subitem {
             position: relative;
-            padding-bottom: 10px;
-            text-align: center;
         }
-        h2::after {
-            content: '';
+
+        .dropdown__menu,
+        .dropdown__submenu {
+            max-height: initial;
+            overflow: initial;
             position: absolute;
-            bottom: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(to right, #47eb9b, #407ef2);
+            top: 6rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s, top .3s;
         }
-        .story-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
+
+        .dropdown__link,
+        .dropdown__sublink {
+            padding-inline: 1rem 3.5rem;
         }
-        .story-image {
-            width: 300px;
-            height: auto;
-            flex-shrink: 0;
+
+        .dropdown__subitem .dropdown__link {
+            padding-inline: 1rem;
         }
-        .vision-mission, .why-partner, .core-objectives {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .vision, .mission {
-            width: 48%;
-            margin-bottom: 20px;
-        }
-        .why-partner-item, .core-objective {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .scroll-container {
-            position: relative;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-        .scroll-content {
-            display: flex;
-            transition: transform 0.3s ease;
-        }
-        .scroll-item {
-            flex: 0 0 100%;
-            padding: 0 20px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        .scroll-item img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .scroll-arrow {
+
+        .dropdown__submenu {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 24px;
+            left: 100%;
+            top: .5rem;
         }
-        .scroll-arrow.left {
-            left: 10px;
+
+        .dropdown__item:hover .dropdown__menu {
+            opacity: 1;
+            top: 5.5rem;
+            pointer-events: initial;
+            transition: top .3s;
         }
-        .scroll-arrow.right {
-            right: 10px;
+
+        .dropdown__subitem:hover > .dropdown__submenu {
+            opacity: 1;
+            top: 0;
+            pointer-events: initial;
+            transition: top .3s;
         }
-        #team {
-            text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        .team-members,
+        .vision-mission,
+        .why-partner,
+        .core-objectives {
+            flex-direction: column;
         }
-        .team-members {
-            display: flex;
-            justify-content: center;
-            flex-wrap: nowrap;
-        }
-        .team-member {
-            width: 30%;
-            margin-right: 3%;
-        }
-        .team-member img {
+
+        .team-member,
+        .vision,
+        .mission,
+        .why-partner-item,
+        .core-objective {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background-color: #ddd;
+            margin-bottom: 20px;
+            margin-right: 0;
         }
-        footer {
-            background-color: #f8f8f8;
-            padding: 20px 0;
-            text-align: center;
+
+        .story-content {
+            flex-direction: column;
+            align-items: center;
         }
-        .social-icons {
-            margin-top: 20px;
+
+        .story-image {
+            margin-bottom: 20px;
         }
-        .social-icons a {
-            color: #333;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+    }
+
+    @media screen and (max-width: 340px) {
+        .container {
+            margin-inline: 1rem;
         }
-        .social-icons a:hover {
-            color: #47eb9b;
+
+        .nav__link {
+            padding-inline: 1rem;
         }
-        @media (max-width: 768px) {
-            .team-members, .vision-mission, .why-partner, .core-objectives {
-                flex-direction: column;
-            }
-            .team-member, .vision, .mission, .why-partner-item, .core-objective {
-                width: 100%;
-                margin-bottom: 20px;
-                margin-right: 0;
-            }
-            .story-content {
-                flex-direction: column;
-                align-items: center;
-            }
-            .story-image {
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+    }
+  </style>
 </head>
 <body>
-    <header class="transparent">
-        <nav>
-            <img src="https://iili.io/2IrZJyP.md.png" alt="Your Company Logo" class="logo">
-            <ul>
-                <li><a href="#story">Our Story</a></li>
-                <li><a href="#vision-mission">Vision & Mission</a></li>
-                <li><a href="#why-partner">Why Partner</a></li>
-                <li><a href="#core-objectives">Core Objectives</a></li>
-                <li><a href="#solutions">Our Solutions</a></li>
-                <li><a href="#dates">Our Dates</a></li>
-                <li><a href="#team">Our Team</a></li>
-            </ul>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+                <a href="#" class="nav__logo">
+                    <img src="https://iili.io/2IrZJyP.md.png" alt="Your Company Logo" class="logo">
+                </a>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav__burger"></i>
+                    <i class="ri-close-line nav__close"></i>
+                </div>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="#story" class="nav__link">Our Story</a></li>
+                    <li><a href="#vision-mission" class="nav__link">Vision & Mission</a></li>
+                    <li><a href="#why-partner" class="nav__link">Why Partner</a></li>
+                    <li><a href="#core-objectives" class="nav__link">Core Objectives</a></li>
+                    <li><a href="#solutions" class="nav__link">Our Solutions</a></li>
+                    <li><a href="#dates" class="nav__link">Our Dates</a></li>
+                    <li><a href="#team" class="nav__link">Our Team</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -365,19 +756,19 @@
             <h2>Our Team</h2>
             <div class="team-members">
                 <div class="team-member">
-                    <img src="https://iili.io/2Ta2wGt.png" alt="CEO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                    <img src="https://iili.io/2Ta2wGt.png" alt="CEO" style="width: 100px; height: 100px; border-radius: 50%;">
                     <h3>Eng. Hani Ashqar</h3>
                     <h3>CO-FOUNDER, CEO</h3>
                     <p>A dynamic leader with 20+ years of executive experience in operations, business development, and finance across industry, academia, NGO, and government sectors.</p>
                 </div>
                 <div class="team-member">
-                        <img src="https://iili.io/2TYQ2mg.md.jpg" alt="COO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                        <img src="https://iili.io/2TYQ2mg.md.jpg" alt="COO" style="width: 100px; height: 100px; border-radius: 50%;">
                     <h3>Sadiqa Siddique, MICR</h3>
                     <h3>CO-FOUNDER, COO</h3>
                     <p>Over two decades of pharmaceutical R&D, Clinical Research, and Drug Development through clinical trials globally across pharma and academia.</p>
                 </div>
                                 <div class="team-member">
-                    <img src="https://iili.io/2Tad8hB.md.jpg" alt="CTO" style="width: 100px; height: 100px; border-radius: 50%;"> 
+                    <img src="https://iili.io/2Tad8hB.md.jpg" alt="CTO" style="width: 100px; height: 100px; border-radius: 50%;">
                     <h3>Prof. Hernando Ombao</h3>
                     <h3>CO-FOUNDER, CTO</h3>
                     <p>Senior KAUST Faculty and brings the great strength in bioinformatics & AI in healthcare.</p>
@@ -396,6 +787,23 @@
     </footer>
 
     <script>
+
+        const showMenu = (toggleId, navId) =>{
+            const toggle = document.getElementById(toggleId),
+                nav = document.getElementById(navId)
+
+            toggle.addEventListener('click', () =>{
+                // Add show-menu class to nav menu
+                nav.classList.toggle('show-menu')
+
+                // Add show-icon to show and hide the menu icon
+                toggle.classList.toggle('show-icon')
+            })
+        }
+
+        showMenu('nav-toggle','nav-menu')
+
+
         // Typewriter effect
         const text = "Bridging AI technology with human expertise, 'Intelligent Solutions Discovery' aims to empower Saudi Arabia's healthcare sector to accelerate clinical innovation, improve patient care and develop clinical research ecosystem for world-class drug development in KSA";
         const typewriter = document.getElementById('typewriter');
@@ -426,17 +834,6 @@
         // Navigation bar scroll effect
         const header = document.querySelector('header');
         const welcomeSection = document.querySelector('.welcome-section');
-
-        function checkScroll() {
-            const welcomeSectionBottom = welcomeSection.offsetTop + welcomeSection.offsetHeight;
-            if (window.pageYOffset > welcomeSectionBottom - header.offsetHeight) {
-                header.classList.remove('transparent');
-                header.classList.add('solid');
-            } else {
-                header.classList.add('transparent');
-                header.classList.remove('solid');
-            }
-        }
 
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
